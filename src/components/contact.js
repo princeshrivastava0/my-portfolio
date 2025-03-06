@@ -102,6 +102,12 @@ function Contact() {
             /* Edge 12 -18 */
             color: #000;
           }
+
+          @media screen and (max-width: 768px) {
+            .form-container {
+              width: 90% !important;
+            }
+          }
         `}
       </style>
 
@@ -126,13 +132,16 @@ function Contact() {
 
         {/* Form */}
         <div
-          className="d-flex justify-content-center mx-auto rounded shadow p-3 pb-0 mt-5"
-          style={{ width: "50%", backgroundColor: "#fff" }}
+          className="d-flex justify-content-center mx-auto rounded shadow p-3 pb-0 mt-5 form-container"
+          style={{
+            width: "50%",
+            backgroundColor: "#fff",
+          }}
         >
           <form onSubmit={onSubmit} className="p-3 w-100">
-            <div className="d-flex align-items-center justify-content-between">
+            <div className="d-flex flex-column flex-md-row align-items-center justify-content-between">
               {/* Full Name Input */}
-              <div className="d-flex flex-column w-50 me-2">
+              <div className="d-flex flex-column w-100 w-md-50 me-md-2 ms-2 ms-md-0">
                 <label htmlFor="username" className="fw-bold mt-3 mb-1">
                   Full Name
                 </label>
@@ -155,7 +164,7 @@ function Contact() {
               </div>
 
               {/* Mobile Input */}
-              <div className="d-flex flex-column w-50 ms-2">
+              <div className="d-flex flex-column w-100 w-md-50 ms-2">
                 <label htmlFor="phone" className="fw-bold mt-3 mb-1">
                   Contact No.
                 </label>

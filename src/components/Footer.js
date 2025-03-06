@@ -47,21 +47,44 @@ function Footer() {
         }
 
         @media screen and (max-width: 768px) {
+          .footer-grid {
+            grid-template-rows: 1fr auto;
+          }
+
           .logo-text {
             font-size: 1.5rem !important;
+          }
+
+          .left-container {
+            width: 100% !important;
+            padding: 20px 0;
+          }
+
+          .left-container-text {
+            width: 100% !important;
+            text-align: center;
+          }
+
+          .social-container {
+            width: 100%;
+            text-align: center;
+          }
+
+          .grid-row-2 {
+            padding: 30px 0 !important;
           }
         }
       `}</style>
       <footer className="footer-grid" style={{ backgroundColor: "#000000" }}>
         {/* Left Container */}
         <div
-          className="mx-auto d-flex justify-content-between align-items-center"
+          className="left-container mx-auto d-flex flex-column flex-md-row justify-content-between align-items-center"
           style={{ width: "80%" }}
         >
           <div>
             {/* Logo */}
             <Link
-              className="d-flex align-items-center text-decoration-none"
+              className="d-flex align-items-center text-decoration-none justify-content-center justify-content-md-start"
               href={"/"}
             >
               <span
@@ -79,7 +102,7 @@ function Footer() {
 
             <p
               style={{ color: "#fff", fontSize: "0.8rem", width: "50%" }}
-              className="px-2 my-3"
+              className="px-2 my-3 left-container-text"
             >
               A passionate Web Developer building dynamic, responsive, and
               user-friendly Web Applications that enhance user experience and
@@ -88,14 +111,14 @@ function Footer() {
           </div>
 
           {/* Social Media */}
-          <div className="d-flex justify-content-center flex-column">
+          <div className="d-flex justify-content-center flex-column social-container mt-3 mt-md-0">
             <h6
               style={{ color: "#fff", fontSize: "1.5rem" }}
               className="ms-2 fw-bold"
             >
-              SOCIAL
+              Follow
             </h6>
-            <div className="d-flex">
+            <div className="d-flex justify-content-center">
               {socialMedia.map((socialMedia, index) => {
                 return (
                   <span
@@ -121,7 +144,10 @@ function Footer() {
         {/* copyright */}
         <div
           className="py-5 grid-row-2 d-flex flex-column align-items-center justify-content-center mx-auto"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.3)", width: "80%" }}
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.3)",
+            width: "80%",
+          }}
         >
           <h6
             className="d-flex d-md-block flex-column justify-content-center align-items-center"

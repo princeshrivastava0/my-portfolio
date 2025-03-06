@@ -7,20 +7,38 @@ function Header({ portfolioBtn }) {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
   const isTabClicked = useRef(false);
+  const [deviceWidth, setDeviceWidth] = useState(769);
 
   useEffect(() => {
-    if (!isTabClicked.current && !portfolioBtn.current) {
-      // Only update on scroll if no recent tab click
-      if (scrollHeight > 100 && scrollHeight < 200) {
-        setIsActiveTab("About");
-      } else if (scrollHeight >= 200 && scrollHeight < 300) {
-        setIsActiveTab("Portfolio");
-      } else if (scrollHeight >= 300) {
-        setIsActiveTab("Contact");
-      } else {
-        setIsActiveTab("Home");
+    if (deviceWidth > 768) {
+      if (!isTabClicked.current && !portfolioBtn.current) {
+        // Only update on scroll if no recent tab click
+        if (scrollHeight > 80 && scrollHeight < 180) {
+          setIsActiveTab("About");
+        } else if (scrollHeight >= 180 && scrollHeight < 280) {
+          setIsActiveTab("Portfolio");
+        } else if (scrollHeight >= 280) {
+          setIsActiveTab("Contact");
+        } else {
+          setIsActiveTab("Home");
+        }
       }
     }
+
+    // if (deviceWidth < 769) {
+    //   if (!isTabClicked.current && !portfolioBtn.current) {
+    //     // Only update on scroll if no recent tab click
+    //     if (scrollHeight > 80 && scrollHeight < 180) {
+    //       setIsActiveTab("About");
+    //     } else if (scrollHeight >= 180 && scrollHeight < 280) {
+    //       setIsActiveTab("Portfolio");
+    //     } else if (scrollHeight >= 280) {
+    //       setIsActiveTab("Contact");
+    //     } else {
+    //       setIsActiveTab("Home");
+    //     }
+    //   }
+    // }
 
     if (portfolioBtn.current) {
       setIsActiveTab("Portfolio");
@@ -61,31 +79,28 @@ function Header({ portfolioBtn }) {
     };
   }, []);
 
+  // Preventing page-scroll when drawer is open
   useEffect(() => {
     if (isDrawerOpen) {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      const scrollLeft =
-        window.pageXOffset || document.documentElement.scrollLeft;
-
-      const preventScroll = () => {
-        window.scrollTo(scrollLeft, scrollTop);
-      };
-
-      window.addEventListener("scroll", preventScroll);
-
-      return () => {
-        window.removeEventListener("scroll", preventScroll);
-      };
+      document.documentElement.style.overflow = "hidden"; // Hides scrollbar
+      document.body.style.overflow = "hidden";
     }
+
+    return () => {
+      document.documentElement.style.overflow = "auto"; // Restores scrollbar
+      document.body.style.overflow = "auto";
+    };
   }, [isDrawerOpen]);
 
+  // Detecting Landscape display
   useEffect(() => {
     const handleResize = () => {
+      // Landscape mode detected
       if (window.innerWidth > window.innerHeight) {
-        // Landscape mode detected
         setIsDrawerOpen(false);
       }
+
+      setDeviceWidth(window.innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -290,7 +305,7 @@ function Header({ portfolioBtn }) {
           style={{
             maxWidth: "300px",
             width: "50%",
-            backgroundColor: "#181825",
+            backgroundColor: "#444444",
           }}
         >
           {navItems.map((item, index) => {

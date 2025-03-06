@@ -125,10 +125,10 @@ function Main({ portfolioBtn }) {
             together!
           </p>
 
-          <div className="d-flex justify-content-evenly mt-5 col-md-8 col-12 mx-auto">
+          <div className="d-flex justify-content-evenly mt-5 col-md-8 col-12 mx-auto px-3">
             {/* Portfolio Button */}
             <button
-              className="action-btn m-3"
+              className="action-btn me-3"
               onClick={() => {
                 portfolioBtn.current = true;
                 setTimeout(() => {
@@ -140,7 +140,7 @@ function Main({ portfolioBtn }) {
               Portfolio
             </button>
             {/* Download Button */}
-            <button className="action-btn m-3">Download Resume</button>
+            <button className="action-btn ms-3">Resume</button>
           </div>
         </div>
       </main>

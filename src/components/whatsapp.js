@@ -59,7 +59,7 @@ function Whatsapp() {
       `}</style>
       <div className="position-fixed btn-container">
         <span
-          className="d-inline-block btn-text px-3 rounded fw-bold"
+          className="d-none d-md-inline-block btn-text px-3 rounded fw-bold"
           style={{ fontSize: "0.9rem" }}
         >
           Let's Chat! 💬

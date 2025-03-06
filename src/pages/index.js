@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <>
-      {loading ? <LoaderScreen /> : ""}
+      {loading && <LoaderScreen />}
       <Whatsapp />
       <Header portfolioBtn={portfolioBtn} />
       <Main portfolioBtn={portfolioBtn} />

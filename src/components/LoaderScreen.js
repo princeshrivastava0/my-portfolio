@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 function LoaderScreen() {
+  // Preventing page-scroll when the loading screen is active
   useEffect(() => {
     document.documentElement.style.overflow = "hidden"; // Hides scrollbar
     document.body.style.overflow = "hidden";

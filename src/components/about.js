@@ -43,13 +43,27 @@ function About() {
         }
 
         @media screen and (max-width: 768px) {
+          .about-container {
+            height: auto !important;
+          }
+
           .mobile-container {
             width: 100% !important;
-            text-align: center;
+          }
+
+          .skill {
+            font-size: 0.9rem;
           }
         }
       `}</style>
-      <section id="about" style={{ height: "100vh", paddingTop: "120px" }}>
+      <section
+        className="about-container"
+        id="about"
+        style={{
+          paddingTop: "120px",
+          height: "100vh",
+        }}
+      >
         <h2
           className="fw-bold about-heading position-relative pb-1"
           style={{
@@ -63,13 +77,15 @@ function About() {
         </h2>
 
         {/* About Content */}
-        <div className="container mt-md-5 mt-3 p-3 d-flex flex-column flex-md-row justify-content-between align-items-start">
+        <div className="container mt-md-5 mt-3 p-md-3 d-flex flex-column flex-md-row justify-content-between align-items-start">
           {/* Left Container */}
           <div
             style={{ width: "48%" }}
-            className="mobile-container px-1 p-md-0"
+            className="mobile-container px-2 p-md-0"
           >
-            <h3 className="mb-3 fw-bold">Hey, I'm Prince!</h3>
+            <h3 className="mb-3 fw-bold text-md-start text-center">
+              Hey, I'm Prince!
+            </h3>
             <p style={{ textAlign: "justify" }}>
               I'm a passionate <strong>Web Developer</strong> specializing in
               <strong> JavaScript</strong>, with expertise in modern web
@@ -128,20 +144,20 @@ function About() {
           {/* Right Container */}
           <div
             style={{ width: "48%" }}
-            className="mobile-container px-1 p-md-0"
+            className="mobile-container text-md-start text-center"
           >
-            <h3 className="mb-3 fw-bold">My skills</h3>
+            <h3 className="mb-3 fw-bold px-2">My skills</h3>
             {skills.map((skill, index) => {
               return (
                 <span
                   key={`skill-${index}`}
-                  className="d-inline-block rounded m-2 p-2 px-3 shadow skill"
+                  className="d-inline-block rounded m-2 p-2 px-2 px-md-3 shadow skill"
                   style={{
                     backgroundColor: "rgba(153, 153, 153, 0.2)",
-                    cursor: "default",
                     fontWeight: "600",
                     cursor: "pointer",
                   }}
+                  onClick={(e) => e.preventDefault()}
                 >
                   {skill}
                 </span>
