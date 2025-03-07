@@ -1,4 +1,22 @@
+import { getCookie, deleteCookie } from "cookies-next";
+
 export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method Not Allowed" });
+  }
+
+  // ✅ Check if CAPTCHA was already verified within the last 2 minutes
+  const captchaVerified = getCookie("captchaVerified", { req, res });
+
+  if (!captchaVerified) {
+    return res
+      .status(400)
+      .json({
+        success: false,
+        message: "CAPTCHA verification expired or missing",
+      });
+  }
+
   if (req.method === "POST") {
     const formData = req.body;
 
@@ -14,6 +32,10 @@ export default async function handler(req, res) {
       });
 
       const result = await response.json();
+
+      // Clear the CAPTCHA cookie after successful submission
+      deleteCookie("captchaVerified", { req, res });
+
       res.status(200).json(result);
     } catch (error) {
       res.status(500).json({ message: "Internal Server Error" });

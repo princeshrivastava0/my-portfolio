@@ -3,18 +3,18 @@ import { useEffect } from "react";
 
 function SuccessModal({ setShow, show, userName }) {
   useEffect(() => {
-    const preventScroll = (event) => {
-      event.preventDefault();
-    };
-
     if (show) {
       document.body.style.paddingRight = "0px"; // Prevents width shift
+      document.documentElement.style.overflow = "hidden"; // Hides scrollbar
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.paddingRight = "0px";
     }
 
     return () => {
       document.body.style.paddingRight = "0px";
+      document.documentElement.style.overflow = "auto"; // Restores scrollbar
+      document.body.style.overflow = "auto";
     };
   }, [show]);
 

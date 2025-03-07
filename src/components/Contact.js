@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import SuccessModal from "./SuccessModal";
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Contact() {
   const [userName, setUserName] = useState("");
   const [modalUser, setModalUser] = useState("");
   const [formStatus, setFormStatus] = useState(false);
   const [show, setShow] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const [error, setError] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const formatName = (name) => {
     return name
@@ -21,9 +25,41 @@ function Contact() {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setFormStatus(true);
-    const formData = new FormData(event.target);
 
+    // Captcha Code - Starts
+
+    if (!recaptchaToken) {
+      setError("Please complete the CAPTCHA verification.");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+      return;
+    }
+
+    setFormStatus(true);
+
+    const captchaResponse = await fetch("/api/verifyCaptcha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ recaptchaToken }),
+    });
+
+    const captchaData = await captchaResponse.json();
+
+    if (!captchaData.success) {
+      setFormStatus(false);
+      setRecaptchaToken(null); // Reset CAPTCHA
+      setError("CAPTCHA verification failed.");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+      return;
+    }
+
+    // Captcha Code Ends
+
+    const formData = new FormData(event.target);
+    formData.delete("g-recaptcha-response");
     const jsonObject = Object.fromEntries(formData);
 
     const response = await fetch("/api/sendForm", {
@@ -42,11 +78,17 @@ function Contact() {
       event.target.reset();
       setModalUser(userName);
       setUserName("");
+      setError("");
+      if (recaptchaRef.current) recaptchaRef.current.reset();
+      setRecaptchaToken(null);
     } else {
       console.log("Form Submission Error: ", data.message);
       setShow(false);
       setFormStatus(false);
       setUserName("");
+      setError("Form submission failed, please try again.");
+      if (recaptchaRef.current) recaptchaRef.current.reset();
+      setRecaptchaToken(null);
     }
   };
   return (
@@ -101,6 +143,17 @@ function Contact() {
           ::-ms-input-placeholder {
             /* Edge 12 -18 */
             color: #000;
+          }
+          .recaptcha-container {
+            display: flex;
+            justify-content: center; /* Center align */
+            align-items: center;
+
+            // border: 2px solid red; /* Add border */
+            border-radius: 8px; /* Optional: Rounded corners */
+            background-color: #f8f8f8; /* Optional: Light background */
+            width: fit-content; /* Adjust width based on content */
+            margin: auto; /* Center horizontally */
           }
 
           @media screen and (max-width: 768px) {
@@ -238,6 +291,26 @@ function Contact() {
               name="subject"
               value={`Portfolio Query - ${userName}`}
             ></input>
+            {/* Google Captcha */}
+            <div className="d-flex justify-content-center align-items-center flex-column">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                className="my-2 mx-auto"
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                onChange={(token) => {
+                  setRecaptchaToken(token);
+                }}
+              />
+
+              {error && (
+                <span
+                  className="fw-bold"
+                  style={{ color: "red", fontSize: "0.8rem" }}
+                >
+                  {error}
+                </span>
+              )}
+            </div>
 
             {/* Submit Btn */}
             <div className="d-flex justify-content-center">
