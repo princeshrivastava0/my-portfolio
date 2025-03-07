@@ -13,11 +13,10 @@ function Portfolio() {
           transform: translateX(-50%);
         }
       `}</style>
-      <section
-        id="portfolio"
+      <div
         style={{
-          height: "100vh",
           backgroundColor: "#fff",
+          height: "100%",
           paddingTop: "120px",
         }}
       >
@@ -33,7 +32,7 @@ function Portfolio() {
           Port
           <span style={{ color: "#FF6B6B", fontWeight: "700" }}>folio</span>
         </h2>
-      </section>
+      </div>
     </>
   );
 }

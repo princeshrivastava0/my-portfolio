@@ -56,12 +56,10 @@ function About() {
           }
         }
       `}</style>
-      <section
+      <div
         className="about-container"
-        id="about"
         style={{
           paddingTop: "120px",
-          height: "100vh",
         }}
       >
         <h2
@@ -165,7 +163,7 @@ function About() {
             })}
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }

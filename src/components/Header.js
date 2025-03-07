@@ -2,48 +2,60 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import ScrollIndicator from "./ScrollIndicator";
 
-function Header({ portfolioBtn }) {
+function Header({ portfolioBtn, activeSection }) {
   const [isActiveTab, setIsActiveTab] = useState("Home");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [scrollHeight, setScrollHeight] = useState(0);
   const isTabClicked = useRef(false);
-  const [deviceWidth, setDeviceWidth] = useState(769);
 
+  // Setting ActiveTab on Scroll
   useEffect(() => {
-    if (deviceWidth > 768) {
+    const handleActiveScroll = () => {
       if (!isTabClicked.current && !portfolioBtn.current) {
         // Only update on scroll if no recent tab click
-        if (scrollHeight > 80 && scrollHeight < 180) {
-          setIsActiveTab("About");
-        } else if (scrollHeight >= 180 && scrollHeight < 280) {
-          setIsActiveTab("Portfolio");
-        } else if (scrollHeight >= 280) {
-          setIsActiveTab("Contact");
-        } else {
-          setIsActiveTab("Home");
-        }
+        setIsActiveTab(() => {
+          return `${activeSection
+            .slice(0, 1)
+            .toUpperCase()}${activeSection.slice(1)}`;
+        });
       }
+
+      if (portfolioBtn.current) {
+        setIsActiveTab("Portfolio");
+      }
+    };
+
+    window.addEventListener("scroll", handleActiveScroll);
+
+    return () => window.removeEventListener("scroll", handleActiveScroll);
+  }, [activeSection]);
+
+  // Preventing page-scroll when drawer is open
+  useEffect(() => {
+    if (isDrawerOpen) {
+      document.documentElement.style.overflow = "hidden"; // Hides scrollbar
+      document.body.style.overflow = "hidden";
     }
 
-    // if (deviceWidth < 769) {
-    //   if (!isTabClicked.current && !portfolioBtn.current) {
-    //     // Only update on scroll if no recent tab click
-    //     if (scrollHeight > 80 && scrollHeight < 180) {
-    //       setIsActiveTab("About");
-    //     } else if (scrollHeight >= 180 && scrollHeight < 280) {
-    //       setIsActiveTab("Portfolio");
-    //     } else if (scrollHeight >= 280) {
-    //       setIsActiveTab("Contact");
-    //     } else {
-    //       setIsActiveTab("Home");
-    //     }
-    //   }
-    // }
+    return () => {
+      document.documentElement.style.overflow = "auto"; // Restores scrollbar
+      document.body.style.overflow = "auto";
+    };
+  }, [isDrawerOpen]);
 
-    if (portfolioBtn.current) {
-      setIsActiveTab("Portfolio");
-    }
-  }, [scrollHeight]);
+  // Detecting Landscape display and disabling active-drawer in landscape mode
+  useEffect(() => {
+    const handleResize = () => {
+      // Landscape mode detected
+      if (window.innerWidth > window.innerHeight) {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const navItems = [
     {
@@ -63,51 +75,6 @@ function Header({ portfolioBtn }) {
       path: "contact",
     },
   ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY; // Get scroll position in pixels
-      const viewportHeight = window.innerHeight; // Get viewport height in pixels
-      const scrollVh = (scrollY / viewportHeight) * 100; // Convert to vh
-
-      setScrollHeight(scrollVh);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  // Preventing page-scroll when drawer is open
-  useEffect(() => {
-    if (isDrawerOpen) {
-      document.documentElement.style.overflow = "hidden"; // Hides scrollbar
-      document.body.style.overflow = "hidden";
-    }
-
-    return () => {
-      document.documentElement.style.overflow = "auto"; // Restores scrollbar
-      document.body.style.overflow = "auto";
-    };
-  }, [isDrawerOpen]);
-
-  // Detecting Landscape display
-  useEffect(() => {
-    const handleResize = () => {
-      // Landscape mode detected
-      if (window.innerWidth > window.innerHeight) {
-        setIsDrawerOpen(false);
-      }
-
-      setDeviceWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <>

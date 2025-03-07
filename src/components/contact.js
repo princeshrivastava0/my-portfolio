@@ -111,9 +111,11 @@ function Contact() {
         `}
       </style>
 
-      <section
-        id="contact"
-        style={{ paddingTop: "120px", paddingBottom: "120px" }}
+      <div
+        style={{
+          paddingTop: "120px",
+          paddingBottom: "120px",
+        }}
         className="contact-bg"
       >
         {/* Heading */}
@@ -259,7 +261,7 @@ function Contact() {
           </form>
         </div>
         <SuccessModal setShow={setShow} show={show} userName={modalUser} />
-      </section>
+      </div>
     </>
   );
 }

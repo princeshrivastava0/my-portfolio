@@ -58,10 +58,9 @@ function Main({ portfolioBtn }) {
           }
         }
       `}</style>
-      <main
-        id="home"
+      <div
         style={{
-          height: "100vh",
+          height: "100%",
         }}
         className="d-flex justify-content-center align-items-center main-bg"
       >
@@ -143,7 +142,7 @@ function Main({ portfolioBtn }) {
             <button className="action-btn ms-3">Resume</button>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }
