@@ -102,7 +102,7 @@ function Footer() {
 
             <p
               style={{ color: "#fff", fontSize: "0.8rem", width: "50%" }}
-              className="px-2 my-3 left-container-text"
+              className="px-3 px-lg-2 my-3 left-container-text"
             >
               A passionate Web Developer building dynamic, responsive, and
               user-friendly Web Applications that enhance user experience and

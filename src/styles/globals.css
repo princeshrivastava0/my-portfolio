@@ -104,3 +104,15 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.recaptcha-container {
+  transform: scale(0.8);
+  transform-origin: center;
+  width: 100%;
+}
+
+.recaptcha-container > div {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

@@ -144,17 +144,6 @@ function Contact() {
             /* Edge 12 -18 */
             color: #000;
           }
-          .recaptcha-container {
-            display: flex;
-            justify-content: center; /* Center align */
-            align-items: center;
-
-            // border: 2px solid red; /* Add border */
-            border-radius: 8px; /* Optional: Rounded corners */
-            background-color: #f8f8f8; /* Optional: Light background */
-            width: fit-content; /* Adjust width based on content */
-            margin: auto; /* Center horizontally */
-          }
 
           @media screen and (max-width: 768px) {
             .form-container {
@@ -194,9 +183,9 @@ function Contact() {
           }}
         >
           <form onSubmit={onSubmit} className="p-3 w-100">
-            <div className="d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <div className="d-flex flex-column flex-xl-row align-items-center justify-content-between">
               {/* Full Name Input */}
-              <div className="d-flex flex-column w-100 w-md-50 me-md-2 ms-2 ms-md-0">
+              <div className="d-flex flex-column w-100 w-md-50 me-xl-2 ms-2 ms-xl-0">
                 <label htmlFor="username" className="fw-bold mt-3 mb-1">
                   Full Name
                 </label>
@@ -292,7 +281,7 @@ function Contact() {
               value={`Portfolio Query - ${userName}`}
             ></input>
             {/* Google Captcha */}
-            <div className="d-flex justify-content-center align-items-center flex-column">
+            <div className="d-flex justify-content-center align-items-center flex-column recaptcha-container">
               <ReCAPTCHA
                 ref={recaptchaRef}
                 className="my-2 mx-auto"

@@ -145,7 +145,7 @@ function Header({ portfolioBtn, activeSection }) {
 
         @media screen and (min-width: 601px) and (max-width: 1100px) {
           .logo-text {
-            font-size: 2vw !important;
+            font-size: 2.5vw !important;
           }
         }
       `}</style>

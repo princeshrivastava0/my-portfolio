@@ -75,13 +75,13 @@ function About() {
         </h2>
 
         {/* About Content */}
-        <div className="container mt-md-5 mt-3 p-md-3 d-flex flex-column flex-md-row justify-content-between align-items-start">
+        <div className="container mt-md-5 mt-3 p-md-3 d-flex flex-column flex-lg-row justify-content-between align-items-start">
           {/* Left Container */}
           <div
             style={{ width: "48%" }}
             className="mobile-container px-2 p-md-0"
           >
-            <h3 className="mb-3 fw-bold text-md-start text-center">
+            <h3 className="mb-3 fw-bold text-lg-start text-center">
               Hey, I'm Prince!
             </h3>
             <p style={{ textAlign: "justify" }}>
@@ -145,7 +145,7 @@ function About() {
           {/* Right Container */}
           <div
             style={{ width: "48%" }}
-            className="mobile-container text-md-start text-center"
+            className="mobile-container text-lg-start text-center"
           >
             <h3 className="mb-3 fw-bold px-2">My skills</h3>
             {skills.map((skill, index) => {
