@@ -136,6 +136,7 @@ function Footer() {
                         src={`/${socialMedia.icon}.png`}
                         width={"100%"}
                         alt={socialMedia.title}
+                        loading="lazy"
                       />
                     </a>
                   </span>
@@ -168,6 +169,7 @@ function Footer() {
               color: "#fff",
               fontWeight: "400",
             }}
+            title="www.princeshrivastava.com"
           >
             Made by{" "}
             <span

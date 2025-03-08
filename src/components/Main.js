@@ -77,10 +77,11 @@ function Main({ portfolioBtn }) {
             Hi, there!
             <span>
               <img
-                src="https://media.tenor.com/0CpFOKGVaeMAAAAi/hand-waving-hand.gif"
+                src="./hand-waving.gif"
                 alt="hand-waving"
                 width={"5%"}
                 className="mb-1 ms-3 hand-gif"
+                loading="lazy"
               />
             </span>
           </h1>

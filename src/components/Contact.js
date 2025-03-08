@@ -300,6 +300,7 @@ function Contact() {
                 onChange={(token) => {
                   setRecaptchaToken(token);
                 }}
+                loading="lazy"
               />
 
               {error && (

@@ -106,6 +106,7 @@ function About() {
                 href="https://www.linkedin.com/in/prince-shrivastava/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="LinkedIn"
               >
                 LinkedIn
               </a>
@@ -116,6 +117,7 @@ function About() {
                 href="https://www.youtube.com/@coding.prince"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Youtube"
               >
                 YouTube
               </a>
@@ -126,6 +128,7 @@ function About() {
                 href="https://www.instagram.com/princeshrivastava.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Instagram"
               >
                 Instagram
               </a>

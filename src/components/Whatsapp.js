@@ -69,6 +69,7 @@ function Whatsapp() {
           href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`}
           target="_blank"
           rel="noopener noreferrer"
+          title="Whatsapp"
         >
           <i className="bi bi-whatsapp" style={{ color: "#ff6b6b" }}></i>
         </a>
