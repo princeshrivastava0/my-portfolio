@@ -132,7 +132,11 @@ function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img src={`/${socialMedia.icon}.png`} width={"100%"} />
+                      <img
+                        src={`/${socialMedia.icon}.png`}
+                        width={"100%"}
+                        alt={socialMedia.title}
+                      />
                     </a>
                   </span>
                 );
