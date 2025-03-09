@@ -128,24 +128,23 @@ function Header({ portfolioBtn, activeSection }) {
           transition: color 0.2s ease-in-out;
         }
 
-        @media screen and (max-width: 1100px) {
-          .header-container {
-            width: 100% !important;
-            border-radius: 0 !important;
-            border: 0 !important;
-          }
-          .logo-text {
-            font-size: 1rem !important;
-          }
+        .header-container {
+          max-width: 2000px !important;
+        }
 
-          .large-nav {
+        @media screen and (max-width: 344px) {
+          .logo-text {
             display: none !important;
           }
         }
 
-        @media screen and (min-width: 601px) and (max-width: 1100px) {
+        @media screen and (max-width: 1100px) {
+          .logo-symbol {
+            margin-top: 0 !important;
+          }
+
           .logo-text {
-            font-size: 2.5vw !important;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem) !important;
           }
         }
       `}</style>
@@ -154,7 +153,7 @@ function Header({ portfolioBtn, activeSection }) {
       <ScrollIndicator />
 
       <header
-        className="header-container d-flex justify-content-between mx-auto py-1 px-3 position-fixed"
+        className="d-flex justify-content-center mx-auto py-1 px-3 position-fixed"
         style={{
           width: "100%",
           height: "70px",
@@ -165,95 +164,97 @@ function Header({ portfolioBtn, activeSection }) {
           zIndex: "3",
         }}
       >
-        {/* Logo */}
-        <Link
-          className="d-flex align-items-center text-decoration-none px-4"
-          href={"/"}
-        >
-          <span
-            className="mt-2 mt-md-0"
-            style={{
-              color: "#444444",
-              fontSize: "1.5rem",
-            }}
-          >
-            {"< "}
-          </span>
-          <span
-            className="fw-bold px-2 logo-text text-hover"
-            style={{
-              fontSize: "1.5rem",
-              letterSpacing: "3px",
-              color: "#444444",
-              textAlign: "center",
-            }}
-          >
-            Prince Shrivastava
-          </span>
-          <span
-            className="mt-2 mt-md-0"
-            style={{
-              color: "#444444",
-              fontSize: "1.5rem",
-            }}
-          >
-            {" />"}
-          </span>
-        </Link>
-
-        {/* Right Container */}
-        <div className="d-flex">
-          {/* DrawerIcon */}
-          <button
-            className="d-md-none"
-            style={{
-              backgroundColor: "transparent",
-              outline: "none",
-              border: "none",
-            }}
-            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+        <div className="d-flex justify-content-between align-items-center w-100 header-container">
+          {/* Logo */}
+          <Link
+            className="d-flex align-items-center text-decoration-none px-4"
+            href={"/"}
           >
             <span
+              className="mt-2 mt-md-0 logo-symbol"
               style={{
-                display: "inline-block",
-                transition: "transform 0.3s ease",
-                transform: isDrawerOpen ? "rotate(180deg)" : "rotate(0deg)",
+                color: "#444444",
+                fontSize: "1.5rem",
               }}
             >
-              <i
-                className={`bi bi-${isDrawerOpen ? "x" : "list"}`}
-                style={{ fontSize: "2rem", color: "#444444" }}
-              ></i>
+              {"< "}
             </span>
-          </button>
-          {/* Large-Navbar */}
-          <nav className="d-none d-md-flex justify-content-end align-items-center">
-            {navItems.map((item, index) => {
-              return (
-                <Link
-                  className={`text-decoration-none mx-4`}
-                  key={`nav-item-${index}`}
-                  href={`#${item.path}`}
-                  onClick={() => {
-                    setIsActiveTab(item.title);
-                    isTabClicked.current = true;
-                    setTimeout(() => {
-                      isTabClicked.current = false; // Re-enable scroll updates after 1s
-                    }, 1000);
-                  }}
-                >
-                  <span
-                    className={`fw-bold ${
-                      isActiveTab === item.title ? "active-tab" : "tab-hover"
-                    }`}
-                    style={{ color: "#444444" }}
+            <span
+              className="fw-bold px-2 logo-text text-hover"
+              style={{
+                fontSize: "1.5rem",
+                letterSpacing: "3px",
+                color: "#444444",
+                textAlign: "center",
+              }}
+            >
+              Prince Shrivastava
+            </span>
+            <span
+              className="mt-2 mt-md-0 logo-symbol"
+              style={{
+                color: "#444444",
+                fontSize: "1.5rem",
+              }}
+            >
+              {" />"}
+            </span>
+          </Link>
+
+          {/* Right Container */}
+          <div className="d-flex">
+            {/* DrawerIcon */}
+            <button
+              className="d-md-none"
+              style={{
+                backgroundColor: "transparent",
+                outline: "none",
+                border: "none",
+              }}
+              onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+            >
+              <span
+                style={{
+                  display: "inline-block",
+                  transition: "transform 0.3s ease",
+                  transform: isDrawerOpen ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              >
+                <i
+                  className={`bi bi-${isDrawerOpen ? "x" : "list"}`}
+                  style={{ fontSize: "2rem", color: "#444444" }}
+                ></i>
+              </span>
+            </button>
+            {/* Large-Navbar */}
+            <nav className="d-none d-md-flex justify-content-end align-items-center">
+              {navItems.map((item, index) => {
+                return (
+                  <Link
+                    className={`text-decoration-none mx-4`}
+                    key={`nav-item-${index}`}
+                    href={`#${item.path}`}
+                    onClick={() => {
+                      setIsActiveTab(item.title);
+                      isTabClicked.current = true;
+                      setTimeout(() => {
+                        isTabClicked.current = false; // Re-enable scroll updates after 1s
+                      }, 1000);
+                    }}
                   >
-                    {item.title}
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
+                    <span
+                      className={`fw-bold ${
+                        isActiveTab === item.title ? "active-tab" : "tab-hover"
+                      }`}
+                      style={{ color: "#444444" }}
+                    >
+                      {item.title}
+                    </span>
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
         </div>
       </header>
 
@@ -270,7 +271,7 @@ function Header({ portfolioBtn, activeSection }) {
         <nav
           className="d-flex flex-column justify-content-center align-items-left shadow"
           style={{
-            maxWidth: "300px",
+            maxWidth: "200px",
             width: "50%",
             backgroundColor: "#444444",
           }}

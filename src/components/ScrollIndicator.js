@@ -24,7 +24,7 @@ function ScrollIndicator() {
 
   return (
     <div
-      className="position-fixed w-100 d-none d-lg-block"
+      className="position-fixed w-100 d-none d-md-block"
       style={{
         top: "0px",
         left: 0,
