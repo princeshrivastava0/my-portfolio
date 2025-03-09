@@ -64,7 +64,7 @@ function Main({ portfolioBtn }) {
         }}
         className="d-flex justify-content-center align-items-center main-bg"
       >
-        <div className="col-12 col-md-10 col-lg-6  mt-5">
+        <div className="col-12 col-md-10 col-lg-6 mt-5">
           <h1
             className="fw-bold"
             style={{
@@ -125,7 +125,10 @@ function Main({ portfolioBtn }) {
             together!
           </p>
 
-          <div className="d-flex justify-content-evenly mt-5 col-md-8 col-12 mx-auto px-3">
+          <div
+            className="d-flex justify-content-evenly mt-5 col-md-8 col-12 mx-auto px-3"
+            style={{ maxWidth: "500px" }}
+          >
             {/* Portfolio Button */}
             <button
               className="action-btn me-3"

@@ -60,6 +60,7 @@ function About() {
         className="about-container"
         style={{
           paddingTop: "120px",
+          paddingBottom: "120px",
         }}
       >
         <h2
@@ -75,11 +76,11 @@ function About() {
         </h2>
 
         {/* About Content */}
-        <div className="container mt-md-5 mt-3 p-md-3 d-flex flex-column flex-md-row justify-content-between align-items-start">
+        <div className="container mt-md-2 mt-3 p-md-3 d-flex flex-column flex-lg-row justify-content-between align-items-start">
           {/* Left Container */}
           <div
             style={{ width: "48%" }}
-            className="mobile-container px-2 p-md-0"
+            className="mobile-container px-2 p-md-0 w-100 me-lg-5 mt-3"
           >
             <h3 className="mb-3 fw-bold text-lg-start text-center">
               Hey, I'm Prince!
@@ -145,7 +146,7 @@ function About() {
           {/* Right Container */}
           <div
             style={{ width: "48%" }}
-            className="mobile-container text-lg-start text-center"
+            className="mobile-container text-lg-start text-center w-100 ms-lg-5 mt-3"
           >
             <h3 className="mb-3 fw-bold px-2">My skills</h3>
             {skills.map((skill, index) => {
@@ -156,7 +157,7 @@ function About() {
                   style={{
                     backgroundColor: "rgba(153, 153, 153, 0.2)",
                     fontWeight: "600",
-                    cursor: "pointer",
+                    cursor: "default",
                   }}
                   onClick={(e) => e.preventDefault()}
                 >
