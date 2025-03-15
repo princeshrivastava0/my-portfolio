@@ -64,7 +64,7 @@ function Main({ portfolioBtn }) {
         }}
         className="d-flex justify-content-center align-items-center main-bg"
       >
-        <div className="col-12 col-md-10 col-lg-6 mt-5">
+        <div className="col-12 col-md-10 col-lg-6 mt-md-5">
           <h1
             className="fw-bold"
             style={{

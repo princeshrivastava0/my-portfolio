@@ -42,6 +42,10 @@ function About() {
           color: #ff6b6b;
         }
 
+        .about-container {
+          padding: 120px 0 !important;
+        }
+
         @media screen and (max-width: 768px) {
           .about-container {
             height: auto !important;
@@ -56,13 +60,7 @@ function About() {
           }
         }
       `}</style>
-      <div
-        className="about-container"
-        style={{
-          paddingTop: "120px",
-          paddingBottom: "120px",
-        }}
-      >
+      <div className="about-container">
         <h2
           className="fw-bold about-heading position-relative pb-1"
           style={{

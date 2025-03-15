@@ -56,6 +56,17 @@ function Whatsapp() {
         .whatsapp-btn:active {
           transform: scale(0.9);
         }
+
+        @media screen and (max-width: 360px) {
+          .btn-container {
+            bottom: 0px !important;
+            right: 10px !important;
+          }
+
+          .whatsapp-btn {
+            font-size: 2rem;
+          }
+        }
       `}</style>
       <div className="position-fixed btn-container">
         <span
