@@ -101,7 +101,12 @@ function Footer() {
             </Link>
 
             <p
-              style={{ color: "#fff", fontSize: "0.8rem", width: "50%" }}
+              style={{
+                color: "#fff",
+                fontSize: "0.8rem",
+                width: "50%",
+                minWidth: "350px",
+              }}
               className="px-3 px-lg-2 my-3 left-container-text"
             >
               A passionate Web Developer building dynamic, responsive, and

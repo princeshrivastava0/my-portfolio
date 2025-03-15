@@ -63,7 +63,7 @@ export default function Home() {
       threshold: isLandScape ? threshold.min : threshold.max, // At least 50% of the section must be visible
     };
 
-    console.log("CurrentThreshold: ", observerOptions.threshold);
+    // console.log("CurrentThreshold: ", observerOptions.threshold);
 
     const observer = new IntersectionObserver((sectionsArray) => {
       sectionsArray.forEach((section) => {
@@ -73,7 +73,7 @@ export default function Home() {
       });
     }, observerOptions);
 
-    console.log("ActiveSection: ", activeSection);
+    // console.log("ActiveSection: ", activeSection);
 
     // Observe all sections
     Object.values(sectionRefs).forEach((sectionRef) => {
