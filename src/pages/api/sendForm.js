@@ -2,19 +2,18 @@ import { getCookie, deleteCookie } from "cookies-next";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" });
+    // return res.status(405).json({ message: "Method Not Allowed" });
+    return res.redirect("/");
   }
 
   // ✅ Check if CAPTCHA was already verified within the last 2 minutes
   const captchaVerified = getCookie("captchaVerified", { req, res });
 
   if (!captchaVerified) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: "CAPTCHA verification expired or missing",
-      });
+    return res.status(400).json({
+      success: false,
+      message: "CAPTCHA verification expired or missing",
+    });
   }
 
   if (req.method === "POST") {
