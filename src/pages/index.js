@@ -2,9 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Main from "@/components/Main";
 import About from "@/components/About";
-import Portfolio from "@/components/Portfolio";
+// import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
-import Whatsapp from "@/components/Whatsapp";
+
 import LoaderScreen from "@/components/LoaderScreen";
 import { useRef, useState, useEffect } from "react";
 
