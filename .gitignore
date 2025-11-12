@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+#whatsapp
+src/components/Whatsapp.js
+
 # testing
 /coverage
 

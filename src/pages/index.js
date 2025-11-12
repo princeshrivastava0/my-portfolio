@@ -118,7 +118,7 @@ export default function Home() {
         }
       `}</style>
       {loading && <LoaderScreen />}
-      <Whatsapp />
+      {/* <Whatsapp /> */}
       <Header portfolioBtn={portfolioBtn} activeSection={activeSection} />
       <main>
         <section
@@ -136,13 +136,13 @@ export default function Home() {
         >
           <About />
         </section>
-        <section
+        {/* <section
           ref={sectionRefs.portfolio}
           id="portfolio"
           style={{ height: "100vh" }}
         >
           <Portfolio />
-        </section>
+        </section> */}
         <section
           ref={sectionRefs.contact}
           id="contact"
